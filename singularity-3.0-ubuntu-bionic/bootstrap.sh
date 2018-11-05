@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+SING_VERSION="v3.0.1"
+
 apt-get update && apt-get -y dist-upgrade
 apt-get install -y build-essential libssl-dev uuid-dev libgpgme11-dev
 
@@ -17,7 +19,7 @@ mkdir -p $GOPATH/src/github.com/sylabs
 cd $GOPATH/src/github.com/sylabs
 git clone https://github.com/sylabs/singularity.git
 git fetch
-git checkout v3.0.0
+git checkout ${SING_VERSION}
 cd singularity
 
 go get -u github.com/golang/dep/cmd/dep
