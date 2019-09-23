@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-SING_VERSION="v3.0.1"
+SING_VERSION="3.4.1-rc.1"
 
 apt-get update && apt-get -y dist-upgrade
 apt-get install -y build-essential libssl-dev uuid-dev libgpgme11-dev
 
-export VERSION=1.11 OS=linux ARCH=amd64
+export VERSION=1.12 OS=linux ARCH=amd64
 cd /tmp
 wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz
 tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz
@@ -22,7 +22,6 @@ git fetch
 git checkout ${SING_VERSION}
 cd singularity
 
-go get -u github.com/golang/dep/cmd/dep
 ./mconfig
 cd ./builddir
 make && sudo make install 
